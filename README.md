@@ -13,7 +13,7 @@ Uma aplicação WebGIS com mapa 2D (MapLibre GL), globo 3D (CesiumJS), análise 
 
 - Interface React moderna, responsiva, com navegação por secções.
 - Mapa 2D com MapLibre, modo imagem de satélite e modo cartográfico.
-- Visualização 3D opcional com CesiumJS **sobre globo elipsoidal**. O relevo 3D real requer configurar um provedor de terreno, além desta versão.
+- Visualização 3D opcional com CesiumJS **sobre globo elipsoidal**. O relevo 3D real é activado opcionalmente por `VITE_CESIUM_ION_TOKEN` (Cesium World Terrain); sem token, utiliza globo elipsoidal.
 - Comparação lado a lado de dois anos em 2D.
 - Camadas Earth Engine: perda anual, perda acumulada até ao ano, cobertura de copas 2000 e RGB Sentinel-2.
 - Estatísticas anuais em hectares e gráfico de 2001 a 2025.
