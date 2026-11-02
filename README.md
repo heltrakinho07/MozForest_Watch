@@ -5,7 +5,7 @@
 ![status](https://img.shields.io/badge/release-research%20preview-9bd88a)
 ![stack](https://img.shields.io/badge/stack-React%20%7C%20FastAPI%20%7C%20Earth%20Engine-167a5a)
 
-Uma aplicação WebGIS de código aberto com mapa 2D (MapLibre GL), globo 3D (CesiumJS), análise de perda anual da cobertura arbórea, indicadores por distrito, composições Sentinel-2 e exportação CSV. **Não apresenta estatísticas simuladas.**
+Uma aplicação WebGIS com mapa 2D (MapLibre GL), globo 3D (CesiumJS), análise de perda anual da cobertura arbórea, indicadores por distrito, composições Sentinel-2 e exportação CSV. **Não apresenta estatísticas simuladas.**
 
 > **Estado:** código implementado, mas as estatísticas científicas e o acesso aos limites distritais só funcionam após configuração de um Google Cloud Project registado no Earth Engine. Deve-se verificar o alinhamento e a cobertura dos limites GAUL com a delimitação oficial nacional. Não é ainda um serviço operacional de alerta ou um produto validado por entidades moçambicanas.
 
@@ -131,4 +131,4 @@ FAO GAUL 2025 pode omitir distritos recentes, adoptar nomes diferentes ou reflec
 
 A aplicação de demonstração não inclui autenticação, protecção contra abuso, quotas por utilizador ou tarefas assíncronas em fila. Não deve ser disponibilizada como serviço público de elevado tráfego sem estas medidas. Consulte [arquitectura](docs/ARCHITECTURE.md) e [roteiro de produção](docs/ROADMAP.md).
 
-Licença do **código próprio:** MIT. Os conjuntos de dados, bibliotecas e serviços de terceiros mantêm os respectivos termos e licenças.
+**Licenciamento:** ainda não foi escolhida uma licença para o código do projecto. Os conjuntos de dados, bibliotecas e serviços de terceiros mantêm os respectivos termos e licenças.
