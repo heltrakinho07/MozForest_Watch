@@ -4,6 +4,7 @@ export default function ForestMap3D({ boundary, tile }) {
   const viewerRef = useRef(null);
   const cesiumRef = useRef(null);
   const [error, setError] = useState("");
+  const [ready, setReady] = useState(false);
   useEffect(() => {
     let disposed = false;
     let viewer;
@@ -26,6 +27,7 @@ export default function ForestMap3D({ boundary, tile }) {
           infoBox: false, selectionIndicator: false
         });
         viewerRef.current = viewer;
+        setReady(true);
         viewer.camera.setView({
           destination: Cesium.Cartesian3.fromDegrees(37.5, -16.5, 850000)
         });
@@ -69,7 +71,7 @@ export default function ForestMap3D({ boundary, tile }) {
       if (overlay && !viewer.isDestroyed()) viewer.imageryLayers.remove(overlay, true);
       if (boundaryData && !viewer.isDestroyed()) viewer.dataSources.remove(boundaryData, true);
     };
-  }, [tile, boundary]);
+  }, [tile, boundary, ready]);
   return <div className="map-slot"><div ref={holder} className="map-canvas"/>{error && <div className="map-warning">{error}</div>}
     <div className="map-footnote">Globo 3D · superfície elipsoidal (sem relevo do terreno)</div></div>;
 }
