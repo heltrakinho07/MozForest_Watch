@@ -260,11 +260,11 @@ export default function App() {
               </div>
               <div className="map-timebar"><div className="timebar-title"><span><Activity size={15}/> Exploração temporal</span>
                 <strong>{year}</strong></div>
-                <input aria-label="Ano principal" type="range" min="2001" max="2025" value={year}
+                <input aria-label="Ano principal" type="range" min={mode === "sentinel" ? "2017" : "2001"} max="2025" value={year}
                        onChange={e => setYear(Number(e.target.value))}/>
                 <div className="timebar-labels"><span>2001</span><span>2007</span><span>2013</span><span>2019</span><span>2025</span></div>
                 {compare && <div className="comparison-year"><label>Ano de comparação: <b>{compareYear}</b></label>
-                  <input aria-label="Ano secundário" type="range" min="2001" max="2025"
+                  <input aria-label="Ano secundário" type="range" min={mode === "sentinel" ? "2017" : "2001"} max="2025"
                          value={compareYear} onChange={e => setCompareYear(Number(e.target.value))}/></div>}
               </div>
               <div className="source-note"><Info size={14}/> Pixel Hansen ≈30 m; resultados são observações remotas exploratórias, não alertas em tempo real.</div>
@@ -285,7 +285,7 @@ export default function App() {
                 <Label>CAMADA DE OBSERVAÇÃO</Label>
                 <div className="layer-options">{modes.map(item => <button key={item.id}
                      className={"layer-choice " + (mode === item.id ? "layer-selected" : "")}
-                     onClick={() => {setMode(item.id); if (item.id === "sentinel" && year < 2017) setYear(2025);}}>
+                     onClick={() => {setMode(item.id); if (item.id === "sentinel") { if (year < 2017) setYear(2025); if (compareYear < 2017) setCompareYear(2017); }}}>
                   <span className="choice-swatch" style={{background:item.color}}/>
                   <span><b>{item.label}</b><small>{item.sub}</small></span><span className="choice-radio">{mode === item.id && <Check size={13}/>}</span>
                 </button>)}</div>
