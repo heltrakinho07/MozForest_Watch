@@ -18,4 +18,4 @@ Para produção: gestão de identidades e autorizações, limitação de pedidos
 
 ## Cesium
 
-O modo 3D usa um globo elipsoidal e base cartográfica OSM; relevo físico real depende de provedor de terreno configurado e licenças apropriadas. A biblioteca é carregada apenas quando o utilizador abre a vista 3D.
+O modo 3D usa um globo elipsoidal e base cartográfica OSM; relevo físico real utiliza o Cesium World Terrain apenas quando `VITE_CESIUM_ION_TOKEN` estiver configurado, sujeito a conta, permissões e condições de utilização. A biblioteca é carregada apenas quando o utilizador abre a vista 3D.
