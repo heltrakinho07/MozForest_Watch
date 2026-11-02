@@ -15,12 +15,21 @@ export default function ForestMap3D({ boundary, tile }) {
         if (disposed) return;
         cesiumRef.current = Cesium;
         const token = import.meta.env.VITE_CESIUM_ION_TOKEN;
-        if (token) Cesium.Ion.defaultAccessToken = token;
+        let terrain = new Cesium.EllipsoidTerrainProvider();
+        if (token) {
+          Cesium.Ion.defaultAccessToken = token;
+          try {
+            terrain = await Cesium.createWorldTerrainAsync();
+          } catch (terrainError) {
+            if (!disposed) setError("Terreno Cesium ion indisponível; a utilizar globo elipsoidal.");
+          }
+        }
+        if (disposed) return;
         viewer = new Cesium.Viewer(holder.current, {
           baseLayer: new Cesium.ImageryLayer(new Cesium.OpenStreetMapImageryProvider({
             url: "https://tile.openstreetmap.org/"
           })),
-          terrainProvider: new Cesium.EllipsoidTerrainProvider(),
+          terrainProvider: terrain,
           animation: false, timeline: false, baseLayerPicker: false,
           homeButton: false, geocoder: false, sceneModePicker: false,
           navigationHelpButton: false, fullscreenButton: false,
@@ -73,5 +82,5 @@ export default function ForestMap3D({ boundary, tile }) {
     };
   }, [tile, boundary, ready]);
   return <div className="map-slot"><div ref={holder} className="map-canvas"/>{error && <div className="map-warning">{error}</div>}
-    <div className="map-footnote">Globo 3D · superfície elipsoidal (sem relevo do terreno)</div></div>;
+    <div className="map-footnote">Globo 3D · relevo Cesium ion opcional mediante configuração</div></div>;
 }
