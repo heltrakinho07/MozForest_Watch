@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Activity, ArrowDownToLine, ArrowRight, BarChart3, BookOpen, Check, ChevronDown,
-  ChevronLeft, ChevronRight, CircleAlert, Database, ExternalLink, Filter,
+  ChevronLeft, ChevronRight, CircleAlert, Database, ExternalLink, Filter, ChevronRight,
   Globe2, Info, Layers3, Leaf, Map as MapIcon, Menu, Mountain, RefreshCw,
   Satellite, Search, Settings2, ShieldCheck, SlidersHorizontal, Sparkles,
   TreePine, TrendingDown, X
